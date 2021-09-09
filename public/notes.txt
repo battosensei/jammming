@@ -1,0 +1,31 @@
+A couple of notes on the flow of information from Stpotify to track and all the changes that ocur: 
+1. spotify.js gets the information and puts it into an array;
+2. App.js as an empty state and a couple of methods that will be used to take the data in a change it and pass it to other components
+    
+    About the state on App.js:
+    this.state = {
+      searchResults: [],
+      playListName: "Top List",
+      playListTracks: [], 
+      popUpShow: false,
+    }
+    
+    About the function that I want to refelct on App, the search(term): 
+    //this function will update the searchResults array in the state of the app
+    search(term) {
+    Spotify.search(term)
+      .then(searchResults => this.setState({
+        searchResults: searchResults
+      }));
+    }
+    This function will receive a term that will came from the searchBar, where the user will be able to make a query
+    that is why I have to pass this method with an event listener to: <SearchBar onSearch={this.search} />
+    Now I have the state of my App.js changed
+    Now I can pass the information to where I wanted it to go as my app already has all information from the user's Spotify account
+
+    3. Will pass the information to searchResults for this component to render the result
+
+
+
+
+
